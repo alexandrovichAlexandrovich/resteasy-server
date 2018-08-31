@@ -4,6 +4,9 @@ import java.io.StringReader;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Singleton "database" manager using in-memory data structures.
+ */
 public class RequestHandler {
 
     private static RequestHandler requestHandler = null;
@@ -14,7 +17,6 @@ public class RequestHandler {
     private RequestHandler(){
         database = new HashMap<String, JsonObject>();
         nextId = 0;
-        this.addNewUser("{\"firstName\": \"Daniil\", \"lastName\": \"isAGod\"}");
     }
 
     public static RequestHandler getInstance(){
@@ -22,6 +24,11 @@ public class RequestHandler {
             requestHandler = new RequestHandler();
         }
         return requestHandler;
+    }
+
+    public JsonObject getUserById(String id) {
+        if(!this.database.containsKey(id)) return null;
+        else return this.database.get(id);
     }
 
     public JsonArray fetchAllUsers(){
@@ -32,25 +39,20 @@ public class RequestHandler {
         return response.build();
     }
 
-    public boolean addNewUser(String newUser){
+    public JsonObject addNewUser(UserInfo newUser){
         String id = this.getNextId();
-        JsonObject inputData = Json.createReader(new StringReader(newUser)).readObject();
-        JsonObjectBuilder entry = Json.createObjectBuilder();
-        entry.add("id", id);
+        JsonObjectBuilder newUserEntry = Json.createObjectBuilder();
+        newUserEntry.add("id", id);
+        StringReader sr = new StringReader(newUser.toString());
+        JsonObject inputData = Json.createReader(sr).readObject();
         inputData.entrySet().forEach(en ->
-                    entry.add(en.getKey(), en.getValue())
+                        newUserEntry.add(en.getKey(), en.getValue())
                 );
-//        data.put("id", Json.createReader(new StringReader(this.getNextId())).read());
-        this.database.put(id, entry.build());
-        return true;
+        this.database.put(id, newUserEntry.build());
+        return this.database.get(id);
     }
 
     private String getNextId(){
         return Integer.toString(this.nextId++);
-    }
-
-    public JsonObject getUserById(String id) {
-        if(!this.database.containsKey(id)) return null;
-        else return this.database.get(id);
     }
 }

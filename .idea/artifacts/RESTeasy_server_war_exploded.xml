@@ -29,7 +29,15 @@
           <element id="library" level="project" name="Maven: com.sun.istack:istack-commons-runtime:2.16" />
           <element id="library" level="project" name="Maven: com.sun.xml.fastinfoset:FastInfoset:1.2.12" />
           <element id="library" level="project" name="Maven: javax.xml.bind:jsr173_api:1.0" />
+          <element id="library" level="project" name="Maven: org.jboss.resteasy:resteasy-jackson-provider:3.0.16.Final" />
+          <element id="library" level="project" name="Maven: org.codehaus.jackson:jackson-core-asl:1.9.12" />
+          <element id="library" level="project" name="Maven: org.codehaus.jackson:jackson-mapper-asl:1.9.12" />
+          <element id="library" level="project" name="Maven: org.codehaus.jackson:jackson-jaxrs:1.9.12" />
+          <element id="library" level="project" name="Maven: org.codehaus.jackson:jackson-xc:1.9.12" />
           <element id="library" level="project" name="Maven: org.glassfish:javax.json:1.0.4" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.6.3" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.6.0" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-core:2.6.3" />
         </element>
       </element>
       <element id="directory" name="META-INF">

@@ -11,9 +11,10 @@
 
     <profiles>
         <profile>
-            <id>tomcatWebapp</id>
+            <id>target</id>
             <build>
-                <directory>/Applications/tomcat/webapps</directory>
+                <!--UPDATE TO YOUR WEBAPPS DIRECTORY-->
+                <directory>C:\tomcat\webapps</directory>
             </build>
         </profile>
     </profiles>
@@ -48,9 +49,21 @@
         </dependency>
 
         <dependency>
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>resteasy-jackson-provider</artifactId>
+            <version>3.0.16.Final</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.glassfish</groupId>
             <artifactId>javax.json</artifactId>
             <version>1.0.4</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.6.3</version>
         </dependency>
 
     </dependencies>
